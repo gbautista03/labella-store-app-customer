@@ -78,6 +78,9 @@ public class CacheConfiguration {
     @Bean
     public JCacheManagerCustomizer cacheManagerCustomizer(javax.cache.configuration.Configuration<Object, Object> jcacheConfiguration) {
         return cm -> {
+            createCache(cm, com.labella.store.customer.domain.Customer.class.getName(), jcacheConfiguration);
+            createCache(cm, com.labella.store.customer.domain.Customer.class.getName() + ".addresses", jcacheConfiguration);
+            createCache(cm, com.labella.store.customer.domain.Address.class.getName(), jcacheConfiguration);
             // jhipster-needle-redis-add-entry
         };
     }
